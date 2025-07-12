@@ -98,5 +98,26 @@
       location.reload(); // simulate delete
     }
   </script>
+  <script>
+    async function deleteItem(itemId) {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`http://localhost:5000/api/admin/item/${itemId}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+
+  const data = await response.json();
+  if (response.ok) {
+    alert("Deleted");
+    location.reload();
+  } else {
+    alert(data.error);
+  }
+}
+
+  </script>
 </body>
 </html>

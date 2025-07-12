@@ -135,5 +135,30 @@
       itemsList.appendChild(div);
     });
   </script>
+
+  
+<script>
+  
+    window.onload = async function () {
+  const response = await fetch("http://localhost:5000/api/items");
+  const items = await response.json();
+
+  const itemsList = document.getElementById("itemsList");
+  items.forEach((item) => {
+    const div = document.createElement("div");
+    div.className = "item-card";
+    div.innerHTML = `
+      <img src="${item.imageUrl}" alt="${item.name}">
+      <h3>${item.name}</h3>
+      <p>${item.description}</p>
+      <p><strong>Owner:</strong> ${item.owner?.email || "Unknown"}</p>
+    `;
+    itemsList.appendChild(div);
+  });
+};
+
+  </script>
+
+
 </body>
 </html>
