@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReWear - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    form {
+      max-width: 400px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+    label {
+      margin-bottom: 0.3rem;
+    }
+    input {
+      padding: 0.6rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.75rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ReWear</h1>
+    <p>Community Clothing Exchange</p>
+    <nav>
+      <a href="browse.html">Browse</a>
+      <a href="add-item.html">Add Item</a>
+    </nav>
+  </header>
+
+  <form id="loginForm">
+    <h2 style="text-align:center;">Login</h2>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" type="email" required />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" type="password" required />
+    </div>
+    <button type="submit">Login</button>
+  </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Redirect to Page 2 (Browse)
+      window.location.href = 'browse.html';
+    });
+  </script>
+</body>
+</html>

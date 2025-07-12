@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReWear - Add New Item</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    section {
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.75rem;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .preview {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ReWear</h1>
+    <p>Add a New Clothing Item</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="browse.html">Browse</a>
+      <a href="add-item.html">Add Item</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>List a New Item</h2>
+    <form id="addItemForm">
+      <div class="form-group">
+        <label for="name">Item Name</label>
+        <input type="text" id="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="size">Size</label>
+        <select id="size" required>
+          <option value=\"\">Select Size</option>
+          <option>XS</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="url" id="imageUrl" placeholder="https://example.com/image.jpg" required />
+      </div>
+
+      <button type="submit">Add Item</button>
+
+      <div class="preview" id="previewContainer" style="display: none;">
+        <h3>Preview</h3>
+        <img id="previewImage" src="" alt="Item Preview" />
+      </div>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById('addItemForm');
+    const imageUrlInput = document.getElementById('imageUrl');
+    const previewContainer = document.getElementById('previewContainer');
+    const previewImage = document.getElementById('previewImage');
+
+    // Show image preview when user types a URL
+    imageUrlInput.addEventListener('input', () => {
+      const url = imageUrlInput.value;
+      if (url.trim() !== '') {
+        previewImage.src = url;
+        previewContainer.style.display = 'block';
+      } else {
+        previewContainer.style.display = 'none';
+      }
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const description = document.getElementById('description').value;
+      const size = document.getElementById('size').value;
+      const imageUrl = imageUrlInput.value;
+
+      alert(`✅ Item added:\n\nName: ${name}\nSize: ${size}\nDescription: ${description}`);
+      form.reset();
+      previewContainer.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

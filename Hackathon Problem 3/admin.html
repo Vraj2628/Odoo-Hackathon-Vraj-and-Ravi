@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ReWear Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: Arial; background: #f8f9fa; margin: 0; }
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    h2 {
+      text-align: center;
+      margin: 1.5rem 0 0.5rem;
+    }
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .btn-delete {
+      background: red;
+      color: white;
+      border: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ReWear Admin Panel</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="browse.html">Browse</a>
+      <a href="add-item.html">Add Item</a>
+      <a href="admin.html">Admin</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
+
+  <h2>Manage Listings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>User</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="adminTable">
+      <!-- JS will populate -->
+    </tbody>
+  </table>
+
+  <script>
+    const items = [
+      { name: "Vintage Jacket", user: "user1@gmail.com", status: "Pending" },
+      { name: "Boots", user: "user2@gmail.com", status: "Approved" },
+      { name: "Summer Dress", user: "user3@gmail.com", status: "Pending" }
+    ];
+
+    const adminTable = document.getElementById("adminTable");
+
+    items.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.user}</td>
+        <td>${item.status}</td>
+        <td><button class="btn-delete" onclick="deleteRow(${index})">Delete</button></td>
+      `;
+      adminTable.appendChild(row);
+    });
+
+    function deleteRow(index) {
+      alert(`Item ${items[index].name} deleted`);
+      location.reload(); // simulate delete
+    }
+  </script>
+</body>
+</html>
